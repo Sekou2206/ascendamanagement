@@ -150,19 +150,24 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
 .section__body p + p { margin-top: 1.2rem; }
 
 /* ---------- 7. HERO (HOME) ---------- */
-.hero { min-height: calc(100vh - var(--header-h)); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 0 4rem; }
+.hero { min-height: calc(100vh - var(--header-h)); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding: 4rem 0; }
 .hero__bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(201, 168, 74, 0.08), transparent 60%), var(--black); z-index: 0; }
-.hero__photo { position: absolute; top: 8%; right: clamp(1rem, 8vw, 8rem); width: clamp(180px, 28vw, 380px); height: clamp(240px, 38vw, 500px); z-index: 2; transform: rotate(-3deg); overflow: hidden; border: 4px solid var(--white-deep); box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
-.hero__photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.3); }
-.hero__photo::after { content: 'ELLA VANGAH — Co-Fondatrice'; position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--black); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 100px; white-space: nowrap; font-weight: 600; }
 .hero__content { position: relative; z-index: 2; padding: 0 var(--gutter); max-width: var(--max-w); margin: 0 auto; width: 100%; }
-.hero__label { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-soft); margin-bottom: 2.5rem; font-weight: 500; }
-.hero__title { font-family: var(--font-display); font-weight: 800; line-height: 0.86; letter-spacing: -0.04em; font-size: clamp(3.5rem, 14vw, 13rem); position: relative; z-index: 1; }
-.hero__title-line { display: block; color: var(--white); margin-left: calc(var(--gutter) * -1); padding-left: var(--gutter); }
-.hero__title-line--outline { color: transparent; -webkit-text-stroke: 1.5px var(--gold); margin-left: clamp(2rem, 12vw, 10rem); font-style: italic; }
-.hero__baseline { margin-top: 2rem; font-family: var(--font-display); font-size: clamp(1rem, 1.6vw, 1.35rem); color: var(--text-soft); max-width: 540px; display: flex; flex-direction: column; gap: 0.2rem; }
+.hero__label { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-soft); margin-bottom: 0.8rem; font-weight: 500; }
+.hero__label-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulseDot 2.4s infinite; }
+@keyframes pulseDot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: 0.5; } }
 
-@media (max-width: 768px) { .hero__photo { width: 140px; height: 180px; top: 4%; right: 1rem; } }
+.hero__sub-label { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-soft); margin-bottom: 3rem; font-weight: 500; }
+
+.hero__title { font-family: var(--font-display); font-weight: 800; line-height: 0.86; letter-spacing: -0.04em; font-size: clamp(3rem, 11vw, 9rem); position: relative; z-index: 1; }
+.hero__title-line { display: block; color: var(--white); }
+.hero__title-line--outline { color: transparent; -webkit-text-stroke: 1.5px var(--gold); margin-left: clamp(1rem, 10vw, 7rem); font-style: italic; }
+
+@media (max-width: 768px) {
+  .hero__title { font-size: clamp(2.5rem, 15vw, 9rem); }
+  .hero__title-line--outline { margin-left: 1rem; }
+  .hero__label, .hero__sub-label { font-size: 0.7rem; }
+}
 
 /* ---------- 8. CO-DIRIGEANTES ---------- */
 .leaders { padding: 0; }
@@ -186,14 +191,12 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
 /* ---------- 9. APERÇU PÔLES ---------- */
 .poles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 4rem; }
 .pole-card { position: relative; aspect-ratio: 4/5; overflow: hidden; display: flex; align-items: flex-end; isolation: isolate; }
-.pole-card__image { position: absolute; inset: 0; z-index: 0; }
-.pole-card--sport .pole-card__image::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.85) 100%); }
-.pole-card--entertainment .pole-card__image::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(250,246,237,0.1) 0%, rgba(250,246,237,0.92) 100%); }
-.pole-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease-out); }
-.pole-card:hover .pole-card__image img { transform: scale(1.08); }
+.pole-card__image { position: absolute; inset: 0; z-index: 0; background: var(--black-deep); }
+.pole-card--entertainment .pole-card__image { background: var(--black); }
+.pole-card__image::after { content: ''; position: absolute; inset: 0; z-index: 1; background: transparent; }
+.pole-card:hover .pole-card__image { transform: scale(1.02); transition: transform 1.4s var(--ease-out); }
 .pole-card__content { position: relative; z-index: 2; padding: clamp(1.5rem, 3vw, 2.5rem); width: 100%; }
-.pole-card--sport .pole-card__content { color: var(--white); }
-.pole-card--entertainment .pole-card__content { color: var(--black); }
+.pole-card--sport .pole-card__content, .pole-card--entertainment .pole-card__content { color: var(--white); }
 
 @media (max-width: 768px) { .poles-grid { grid-template-columns: 1fr; } }
 
@@ -330,7 +333,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
 .footer__col a, .footer__col li { font-size: 0.9rem; color: rgba(244, 239, 230, 0.6); transition: color 0.3s; line-height: 1.5; }
 .footer__col a:hover { color: var(--gold); }
 .footer__brand p { font-size: 0.9rem; color: rgba(244, 239, 230, 0.55); line-height: 1.6; margin-top: 1rem; max-width: 320px; }
-.footer__signature { font-family: var(--font-display); font-size: clamp(2.5rem, 10vw, 10rem); font-weight: 800; letter-spacing: -0.04em; line-height: 0.9; text-align: center; padding: 2rem var(--gutter) 1rem; background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-deep) 60%, rgba(157, 129, 51, 0.3) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; word-break: break-word; }
+.footer__signature { font-family: var(--font-display); font-size: clamp(2rem, 8vw, 7rem); font-weight: 800; letter-spacing: -0.04em; line-height: 0.9; text-align: center; padding: 2rem var(--gutter) 1rem; background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-deep) 60%, rgba(157, 129, 51, 0.3) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; word-break: break-word; }
 .footer__bottom { max-width: var(--max-w); margin: 0 auto; padding: 2rem var(--gutter) 0; border-top: 1px solid rgba(244, 239, 230, 0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; color: rgba(244, 239, 230, 0.4); }
 @media (max-width: 880px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .footer__grid { grid-template-columns: 1fr; } }
@@ -394,22 +397,19 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
   <section class="page page--home is-active" data-page="home">
     <div class="hero">
       <div class="hero__bg"></div>
-      <div class="hero__photo" data-parallax="0.15">
-        <img src="hero1.JPG" alt="Portrait Ella Vangah" loading="eager">
-      </div>
       <div class="hero__content">
         <div class="hero__label" data-reveal>
           <span class="hero__label-dot"></span>
           <span data-i18n="hero_label">Agence de management · Internationale</span>
         </div>
+        <div class="hero__sub-label" data-reveal>
+          <span data-i18n="hero_baseline1">Agence de Communication 360°</span><br>
+          <span data-i18n="hero_baseline2">Agent Image · Sport & Entertainment</span>
+        </div>
         <h1 class="hero__title">
           <span class="hero__title-line" data-hero-line>ASCENDA</span>
           <span class="hero__title-line hero__title-line--outline" data-hero-line>Management</span>
         </h1>
-        <div class="hero__baseline" data-reveal>
-          <p data-i18n="hero_baseline1">Agence de Communication 360°</p>
-          <p data-i18n="hero_baseline2">Agent Image · Sport & Entertainment</p>
-        </div>
       </div>
     </div>
 
@@ -437,9 +437,9 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
         <div class="leader__info">
           <div class="leader__role" data-reveal data-i18n="ella_role">Co-Fondatrice · ASCENDA MANAGEMENT</div>
           <h3 class="leader__name" data-reveal>Ella Vangah</h3>
-          <p class="leader__bio" data-reveal data-i18n="ella_bio">Actrice et top modèle, Miss et participante à Nouvelle Reine. Elle s'est lancée dans la mode sans réel repère. Cette expérience nourrit sa conviction : offrir aux talents de la mode et de l'entertainment le cadre, les formations et les opportunités qui lui ont manqué.</p>
+          <p class="leader__bio" data-reveal data-i18n="ella_bio">Actrice, top modèle et diplômée en Communication et Journalisme, j’évolue entre la mode, la publicité et le cinéma. Mon parcours m’a convaincue qu’une carrière solide repose sur le talent, la discipline et une image forte. Avec Ascenda Management, je forme et accompagne les talents pour les aider à évoluer avec confiance et professionnalisme.
+</p>
           <div class="leader__meta" data-reveal>
-            <a href="mailto:hello@ascendamanagement.com" class="leader__email">hello@ascendamanagement.com</a>
             <a href="#" data-nav-link="entertainment" class="leader__link"><span data-i18n="link_ent">Pôle Entertainment</span> →</a>
           </div>
         </div>
@@ -447,11 +447,11 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
 
       <article class="leader leader--marie">
         <div class="leader__media" data-reveal>
-          <img src="Mlo1.jpg" alt="Marie-Laurence Urvoy" loading="lazy">
-          <div class="leader__pill" data-i18n="marie_pill">Co-gérante</div>
+          <img src="MLO1.jpg" alt="Marie-Laurence Urvoy" loading="lazy">
+          <div class="leader__pill" data-i18n="marie_pill">Co-Fondatrice</div>
         </div>
         <div class="leader__info">
-          <div class="leader__role" data-reveal data-i18n="marie_role">Co-gérante · ASCENDA MANAGEMENT</div>
+          <div class="leader__role" data-reveal data-i18n="marie_role">Co-Fondatrice · ASCENDA MANAGEMENT</div>
           <h3 class="leader__name" data-reveal>Marie-Laurence Urvoy</h3>
           <p class="leader__bio" data-reveal data-i18n="marie_bio">Ancienne athlète internationale, double certifiée CIO/FIFA. Elle porte la gestion sportive des athlètes d'élite, avec un ancrage international.</p>
           <div class="leader__meta" data-reveal>
@@ -472,7 +472,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
       <div class="container">
         <div class="poles-grid">
           <a href="#" data-nav-link="sport" class="pole-card pole-card--sport" data-reveal>
-            <div class="pole-card__image"><img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=900&q=80" alt="Sport" loading="lazy"></div>
+            <div class="pole-card__image"></div>
             <div class="pole-card__content">
               <span class="pole-card__num" data-i18n="pole1_num">Pôle 01</span>
               <h3 class="pole-card__title" data-i18n="pole1_title">Sport</h3>
@@ -481,7 +481,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
             </div>
           </a>
           <a href="#" data-nav-link="entertainment" class="pole-card pole-card--entertainment" data-reveal>
-            <div class="pole-card__image"><img src="IMG_2934.jpg" alt="Entertainment" loading="lazy"></div>
+            <div class="pole-card__image"></div>
             <div class="pole-card__content">
               <span class="pole-card__num" data-i18n="pole2_num">Pôle 02</span>
               <h3 class="pole-card__title" data-i18n="pole2_title">Entertainment</h3>
@@ -512,6 +512,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
         <div class="footer__col">
           <h4 data-i18n="footer_legal">Réseau & Légal</h4>
           <ul>
+            <li><a href="mailto:hello@ascendamanagement.com">hello@ascendamanagement.com</a></li>
             <li><a href="https://www.instagram.com/ascenda_management/" target="_blank">Instagram</a></li>
             <li><a href="https://kick.com/ascendamanagement?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAadCXlYQQvXA9WATxHwe-wI6dYcTH3C-qrIogb6nxXMBZGlSPDR2Ny3ouziwqA_aem_RZsGFaPXszm5Ye1Siwe5Cg" target="_blank">Kick</a></li>
             <li><a href="https://www.linkedin.com/in/ascenda-management-1239a53b8?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">LinkedIn</a></li>
@@ -637,8 +638,8 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
           <div class="athlete-card" data-athlete="4"><img src="IMG_0957.JPG" alt="Bernadette"><div class="athlete-overlay"><span class="athlete-name">Bernadette Amani</span><span class="athlete-sport">Football</span></div></div>
           <div class="athlete-card" data-athlete="5"><img src="IMG_0954.jpg" alt="Rebecca"><div class="athlete-overlay"><span class="athlete-name">Rebecca Elloh</span><span class="athlete-sport">Football</span></div></div>
           <div class="athlete-card" data-athlete="6"><img src="Oceane.JPG" alt="Océane"><div class="athlete-overlay"><span class="athlete-name">Océane Konan</span><span class="athlete-sport">Football</span></div></div>
-          <div class="athlete-card" data-athlete="7"><img src="IMG_0956.jpg" alt="Emmanuella"><div class="athlete-overlay"><span class="athlete-name">Emmanuella Yapi</span><span class="athlete-sport">Football</span></div></div>
-          <div class="athlete-card" data-athlete="8"><img src="Bernadette.JPG" alt="Jocyline"><div class="athlete-overlay"><span class="athlete-name">Jocyline Koffi</span><span class="athlete-sport">Football</span></div></div>
+          <div class="athlete-card" data-athlete="7"><img src="EM1.JPG" alt="Emmanuella"><div class="athlete-overlay"><span class="athlete-name">Emmanuella Yapi</span><span class="athlete-sport">Football</span></div></div>
+          <div class="athlete-card" data-athlete="8"><img src="Joc.JPG" alt="Jocyline"><div class="athlete-overlay"><span class="athlete-name">Jocyline Koffi</span><span class="athlete-sport">Football</span></div></div>
           <div class="athlete-card" data-athlete="9"><img src="Melissa.JPG" alt="Melissa"><div class="athlete-overlay"><span class="athlete-name">Melissa Behinan</span><span class="athlete-sport">Football</span></div></div>
           <div class="athlete-card" data-athlete="10"><img src="Sara.JPG" alt="Sara"><div class="athlete-overlay"><span class="athlete-name">Sara Traore</span><span class="athlete-sport">Football</span></div></div>
           <div class="athlete-card" data-athlete="11"><img src="Reese.jpg" alt="Reese"><div class="athlete-overlay"><span class="athlete-name">Reese Mendenhall</span><span class="athlete-sport">Football</span></div></div>
@@ -652,8 +653,8 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
         <div class="athlete-profile" id="profile-4"><div class="athlete-profile__media"><img src="IMG_0957.JPG" alt="Bernadette"></div><div class="athlete-profile__info"><h3>Bernadette Amani Kakounan</h3><h4>Football · Bayern Munich</h4><p>Capitaine des Éléphantes. Championne d’Allemagne 2026 et demi-finaliste de la Ligue des Champions. Reconnue pour son leadership et sa qualité de relance.</p><div class="athlete-profile__team"><h5 data-i18n="ath_team">Informations</h5><ul><li>Sport: Football</li><li>Poste: Milieu défensive</li><li>Club: Bayern Munich</li><li>Statut: Capitaine des Éléphantes</li><li>Palmarès: Championne d'Allemagne 2026</li></ul></div><button class="athlete-profile__close" data-i18n="close_profile">Fermer le profil</button></div></div>
         <div class="athlete-profile" id="profile-5"><div class="athlete-profile__media"><img src="IMG_0954.jpg" alt="Rebecca"></div><div class="athlete-profile__info"><h3>Rebecca Elloh</h3><h4>Football · Valencia CF</h4><p>Internationale ivoirienne expérimentée. Valeurs mises en avant : courage, discipline et foi. Souhaite créer une académie de football et investir dans l’immobilier après sa carrière.</p><div class="athlete-profile__team"><h5 data-i18n="ath_team">Informations</h5><ul><li>Sport: Football</li><li>Poste: Ailière gauche</li><li>Club: Valencia CF</li><li>Valeurs: Courage, discipline et foi</li></ul></div><button class="athlete-profile__close" data-i18n="close_profile">Fermer le profil</button></div></div>
         <div class="athlete-profile" id="profile-6"><div class="athlete-profile__media"><img src="Oceane.JPG" alt="Océane"></div><div class="athlete-profile__info"><h3>Océane Konan Lamfir</h3><h4>Football · Stella FC d’Adjamé</h4><p>Internationale ivoirienne malgré son jeune âge. Considérée comme l’un des plus grands espoirs africains à son poste, avec un potentiel de transfert vers l’Europe.</p><div class="athlete-profile__team"><h5 data-i18n="ath_team">Informations</h5><ul><li>Sport: Football</li><li>Poste: Gardienne de but</li><li>Club: Stella FC d’Adjamé</li><li>Née en: 2007 à Bouaké</li><li>Potentiel: Transfert vers l'Europe</li></ul></div><button class="athlete-profile__close" data-i18n="close_profile">Fermer le profil</button></div></div>
-        <div class="athlete-profile" id="profile-7"><div class="athlete-profile__media"><img src="IMG_0956.jpg" alt="Emmanuella"></div><div class="athlete-profile__info"><h3>Emmanuella Yapi</h3><h4>Football · Alabama State University</h4><p>Ancienne pensionnaire de la Right to Dream Academy. Arrivée aux États-Unis à 10 ans. Étudie les services de réadaptation tout en poursuivant sa carrière sportive. Très active sur TikTok et Instagram.</p><div class="athlete-profile__team"><h5 data-i18n="ath_team">Informations</h5><ul><li>Sport: Football</li><li>Poste: Attaquante</li><li>Club: Alabama State University (NCAA D1)</li><li>Études: Services de réadaptation</li></ul></div><button class="athlete-profile__close" data-i18n="close_profile">Fermer le profil</button></div></div>
-        <div class="athlete-profile" id="profile-8"><div class="athlete-profile__media"><img src="Bernadette.JPG" alt="Jocyline"></div><div class="athlete-profile__info"><h3>Jocyline Koffi</h3><h4>Football · Providence College</h4><p>Joue également avec Hartford Athletic. Étudiante en génie électrique. Ancienne de Right to Dream Academy. Souhaite inspirer les jeunes filles à poursuivre leurs rêves sportifs.</p><div class="athlete-profile__team"><h5 data-i18n="ath_team">Informations</h5><ul><li>Sport: Football</li><li>Poste: Ailière / Attaquante</li><li>Club: Providence College (NCAA D1)</li><li>Études: Génie électrique</li></ul></div><button class="athlete-profile__close" data-i18n="close_profile">Fermer le profil</button></div></div>
+        <div class="athlete-profile" id="profile-7"><div class="athlete-profile__media"><img src="EM1.JPG" alt="Emmanuella"></div><div class="athlete-profile__info"><h3>Emmanuella Yapi</h3><h4>Football · Utah</h4><p>Ancienne pensionnaire de la Right to Dream Academy. Arrivée aux États-Unis à 10 ans. Étudie les services de réadaptation tout en poursuivant sa carrière sportive. Très active sur TikTok et Instagram.</p><div class="athlete-profile__team"><h5 data-i18n="ath_team">Informations</h5><ul><li>Sport: Football</li><li>Poste: Attaquante</li><li>Club: Utah</li><li>Études: Services de réadaptation</li></ul></div><button class="athlete-profile__close" data-i18n="close_profile">Fermer le profil</button></div></div>
+        <div class="athlete-profile" id="profile-8"><div class="athlete-profile__media"><img src="Joc.JPG" alt="Jocyline"></div><div class="athlete-profile__info"><h3>Jocyline Koffi</h3><h4>Football · Providence College</h4><p>Joue également avec Hartford Athletic. Étudiante en génie électrique. Ancienne de Right to Dream Academy. Souhaite inspirer les jeunes filles à poursuivre leurs rêves sportifs.</p><div class="athlete-profile__team"><h5 data-i18n="ath_team">Informations</h5><ul><li>Sport: Football</li><li>Poste: Ailière / Attaquante</li><li>Club: Providence College (NCAA D1)</li><li>Études: Génie électrique</li></ul></div><button class="athlete-profile__close" data-i18n="close_profile">Fermer le profil</button></div></div>
         <div class="athlete-profile" id="profile-9"><div class="athlete-profile__media"><img src="Melissa.JPG" alt="Melissa"></div><div class="athlete-profile__info"><h3>Melissa Sandrine Behinan</h3><h4>Football · Amedspor</h4><p>Internationale ivoirienne. Surnommée « Cristiano » pour son explosivité. A signé son premier contrat professionnel à l’étranger en 2026 après plusieurs saisons en Côte d’Ivoire.</p><div class="athlete-profile__team"><h5 data-i18n="ath_team">Informations</h5><ul><li>Sport: Football</li><li>Poste: Ailière</li><li>Club: Amedspor (Turquie)</li><li>Née en: 2003 à Daloa</li><li>Surnom: "Cristiano"</li></ul></div><button class="athlete-profile__close" data-i18n="close_profile">Fermer le profil</button></div></div>
         <div class="athlete-profile" id="profile-10"><div class="athlete-profile__media"><img src="Sara.JPG" alt="Sara"></div><div class="athlete-profile__info"><h3>Sara Traore</h3><h4>Football · Stella FC</h4><p>Internationale ivoirienne. Double championne avec Les Onze Sœurs de Gagnoa avant de rejoindre le Stella FC. Reconnue pour sa discipline, sa puissance et son sens du placement.</p><div class="athlete-profile__team"><h5 data-i18n="ath_team">Informations</h5><ul><li>Sport: Football</li><li>Poste: Défenseure centrale</li><li>Club: Stella FC</li><li>Née en: 2007 à Bouaké</li><li>Palmarès: Double championne avec Gagnoa</li></ul></div><button class="athlete-profile__close" data-i18n="close_profile">Fermer le profil</button></div></div>
         <div class="athlete-profile" id="profile-11"><div class="athlete-profile__media"><img src="Reese.jpg" alt="Reese"></div><div class="athlete-profile__info"><h3>Reese Mendenhall</h3><h4>Football · Szekszárd FC</h4><p>Ancienne capitaine en NCAA et en championnat de Porto Rico. A marqué 7 buts et délivré 6 passes décisives en 13 matchs avec Caribbean Stars. Profil international reconnu pour son leadership et son parcours académique.</p><div class="athlete-profile__team"><h5 data-i18n="ath_team">Informations</h5><ul><li>Sport: Football</li><li>Poste: Milieu / Latérale</li><li>Club: Szekszárd FC (Hongrie)</li><li>Profil: International (USA, Caraïbes, Europe)</li></ul></div><button class="athlete-profile__close" data-i18n="close_profile">Fermer le profil</button></div></div>
@@ -688,6 +689,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
         <div class="footer__col">
           <h4 data-i18n="footer_legal">Réseau & Légal</h4>
           <ul>
+            <li><a href="mailto:hello@ascendamanagement.com">hello@ascendamanagement.com</a></li>
             <li><a href="https://www.instagram.com/ascenda_management/" target="_blank">Instagram</a></li>
             <li><a href="https://kick.com/ascendamanagement?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAadCXlYQQvXA9WATxHwe-wI6dYcTH3C-qrIogb6nxXMBZGlSPDR2Ny3ouziwqA_aem_RZsGFaPXszm5Ye1Siwe5Cg" target="_blank">Kick</a></li>
             <li><a href="https://www.linkedin.com/in/ascenda-management-1239a53b8?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">LinkedIn</a></li>
@@ -699,7 +701,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
       <div class="footer__signature">ASCENDA MANAGEMENT</div>
       <div class="footer__bottom">
         <span>© <span class="js-year">2025</span> ASCENDA MANAGEMENT SARL & ASCENDA MANAGEMENT LLC · Tous droits réservés</span>
-        <span data-i18n="footer_sig">Inspirer · Valoriser · Élever</span>
+        <span data-i18n="footer_sig">Représenter · Développer · Transmettre</span>
       </div>
     </footer>
   </section>
@@ -809,7 +811,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
         <div class="partners">
           <div class="partner" data-reveal><div class="partner__icon">01</div><h3 class="partner__title" data-i18n="ent_pt1_t">Hôtels & Hospitalité</h3><p class="partner__desc" data-i18n="ent_pt1_d">Partenariats en cours à Abidjan avec des établissements de prestige — événements, accueils, mises en relation.</p></div>
           <div class="partner" data-reveal><div class="partner__icon">02</div><h3 class="partner__title" data-i18n="ent_pt2_t">Médias & Production</h3><p class="partner__desc" data-i18n="ent_pt2_d">Maisons de production pour films, séries, vidéos — un réseau actif pour placer les talents au bon endroit.</p></div>
-          <div class="partner" data-reveal><div class="partner__icon">03</div><h3 class="partner__title" data-i18n="ent_pt3_t">Engagement Social</h3><p class="partner__desc" data-i18n="ent_pt3_d">Liée à File Espoir, engagée pour le sport et les causes humanitaires — une dimension qui dépasse la carrière.</p></div>
+          <div class="partner" data-reveal><div class="partner__icon">03</div><h3 class="partner__title" data-i18n="ent_pt3_t">Engagement Social</h3><p class="partner__desc" data-i18n="ent_pt3_d">Liée à File Espoir, engagée pour et les causes humanitaires — une dimension qui dépasse la carrière.</p></div>
         </div>
       </div>
     </section>
@@ -821,7 +823,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
         <h2 class="display-title" data-reveal data-i18n="ent_sec6_title">Une <em>présence,</em><br>pas une pose.</h2>
         <div class="gallery">
           <div class="gallery__item gallery__item--portrait" data-reveal><img src="IMG_1771.jpg" alt="Portrait mode" loading="lazy"></div>
-          <div class="gallery__item gallery__item--landscape" data-reveal><img src="IMG_2092.png" alt="Editorial mode" loading="lazy" style="object-fit: contain;"></div>
+          <div class="gallery__item gallery__item--landscape" data-reveal><img src="IMG_2092.png" alt="Editorial mode" loading="lazy" style="object-fit: contain; background: #000;"></div>
           <div class="gallery__item gallery__item--square" data-reveal><img src="IMG_0965.jpg" alt="Mode portrait" loading="lazy"></div>
           <div class="gallery__item gallery__item--wide" data-reveal><img src="IMG_0966.jpg" alt="Mannequin portrait" loading="lazy"></div>
           <div class="gallery__item gallery__item--wide" data-reveal><img src="IMG_0967.jpg" alt="Editorial" loading="lazy"></div>
@@ -855,6 +857,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
         <div class="footer__col">
           <h4 data-i18n="footer_legal">Réseau & Légal</h4>
           <ul>
+            <li><a href="mailto:hello@ascendamanagement.com">hello@ascendamanagement.com</a></li>
             <li><a href="https://www.instagram.com/ascenda_management/" target="_blank">Instagram</a></li>
             <li><a href="https://kick.com/ascendamanagement?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAadCXlYQQvXA9WATxHwe-wI6dYcTH3C-qrIogb6nxXMBZGlSPDR2Ny3ouziwqA_aem_RZsGFaPXszm5Ye1Siwe5Cg" target="_blank">Kick</a></li>
             <li><a href="https://www.linkedin.com/in/ascenda-management-1239a53b8?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">LinkedIn</a></li>
@@ -885,7 +888,6 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
       <div class="container">
         <div class="partners-page-grid">
           <div class="partner-page-card" data-reveal><div class="partner-name">Kick</div></div>
-          <div class="partner-page-card" data-reveal><div class="partner-name">All around</div></div>
           <div class="partner-page-card" data-reveal><div class="partner-name">Blu Lab</div></div>
           <div class="partner-page-card" data-reveal><div class="partner-name">Academie Graines de champion (Dakar)</div></div>
           <div class="partner-page-card" data-reveal><div class="partner-name">Flexx</div></div>
@@ -917,6 +919,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
         <div class="footer__col">
           <h4 data-i18n="footer_legal">Réseau & Légal</h4>
           <ul>
+            <li><a href="mailto:hello@ascendamanagement.com">hello@ascendamanagement.com</a></li>
             <li><a href="https://www.instagram.com/ascenda_management/" target="_blank">Instagram</a></li>
             <li><a href="https://kick.com/ascendamanagement?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAadCXlYQQvXA9WATxHwe-wI6dYcTH3C-qrIogb6nxXMBZGlSPDR2Ny3ouziwqA_aem_RZsGFaPXszm5Ye1Siwe5Cg" target="_blank">Kick</a></li>
             <li><a href="https://www.linkedin.com/in/ascenda-management-1239a53b8?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">LinkedIn</a></li>
@@ -1012,6 +1015,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
         <div class="footer__col">
           <h4 data-i18n="footer_legal">Réseau & Légal</h4>
           <ul>
+            <li><a href="mailto:hello@ascendamanagement.com">hello@ascendamanagement.com</a></li>
             <li><a href="https://www.instagram.com/ascenda_management/" target="_blank">Instagram</a></li>
             <li><a href="https://kick.com/ascendamanagement?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAadCXlYQQvXA9WATxHwe-wI6dYcTH3C-qrIogb6nxXMBZGlSPDR2Ny3ouziwqA_aem_RZsGFaPXszm5Ye1Siwe5Cg" target="_blank">Kick</a></li>
             <li><a href="https://www.linkedin.com/in/ascenda-management-1239a53b8?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">LinkedIn</a></li>
@@ -1078,7 +1082,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
       'ella_pill': 'Co-Fondatrice', 'ella_role': 'Co-Fondatrice · ASCENDA MANAGEMENT',
       'ella_bio': "Actrice et top modèle, Miss et participante à Nouvelle Reine. Elle s'est lancée dans la mode sans réel repère. Cette expérience nourrit sa conviction : offrir aux talents de la mode et de l'entertainment le cadre, les formations et les opportunités qui lui ont manqué.",
       'link_ent': 'Pôle Entertainment',
-      'marie_pill': 'Co-gérante', 'marie_role': 'Co-gérante · ASCENDA MANAGEMENT',
+      'marie_pill': 'Co-Fondatrice', 'marie_role': 'Co-Fondatrice · ASCENDA MANAGEMENT',
       'marie_bio': "Ancienne athlète internationale, double certifiée CIO/FIFA. Elle porte la gestion sportive des athlètes d'élite, avec un ancrage international.",
       'link_sport': 'Pôle Sport',
       'home_sec2_label': '02 — Nos pôles', 'home_sec2_t1': 'Deux mondes,', 'home_sec2_t2': 'une même <em>exigence.</em>',
@@ -1133,7 +1137,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
       'ent_sec5_label': '05 — Partenaires & collaborations', 'ent_sec5_title': 'Un écosystème<br>de <em>connexions.</em>',
       'ent_pt1_t': 'Hôtels & Hospitalité', 'ent_pt1_d': 'Partenariats en cours à Abidjan avec des établissements de prestige — événements, accueils, mises en relation.',
       'ent_pt2_t': 'Médias & Production', 'ent_pt2_d': 'Maisons de production pour films, séries, vidéos — un réseau actif pour placer les talents au bon endroit.',
-      'ent_pt3_t': 'Engagement Social', 'ent_pt3_d': 'Liée à File Espoir, engagée pour le sport et les causes humanitaires — une dimension qui dépasse la carrière.',
+      'ent_pt3_t': 'Engagement Social', 'ent_pt3_d': 'Liée à File Espoir, engagée pour et les causes humanitaires — une dimension qui dépasse la carrière.',
       'ent_sec6_label': '06 — Lookbook', 'ent_sec6_title': 'Une <em>présence,</em><br>pas une pose.',
       'ent_cta_t': 'Prêt à transformer ta carrière ?', 'ent_cta_btn': 'Démarrer un projet',
       'part_hero_label': 'Réseau & Collaborations', 'part_hero_title': 'Nos <em>Partenaires.</em>', 'part_hero_sub': "Un écosystème de connexions de premier plan pour accompagner nos talents sur la scène internationale.",
@@ -1154,7 +1158,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
       'ella_pill': 'Co-Founder', 'ella_role': 'Co-Founder · ASCENDA MANAGEMENT',
       'ella_bio': "An actress and top model, Miss and participant in Nouvelle Reine. She ventured into fashion without a real guide. This experience fuels her conviction: to offer fashion and entertainment talents the framework, training, and opportunities she lacked.",
       'link_ent': 'Entertainment Division',
-      'marie_pill': 'Co-Manager', 'marie_role': 'Co-Manager · ASCENDA MANAGEMENT',
+      'marie_pill': 'Co-Founder', 'marie_role': 'Co-Founder · ASCENDA MANAGEMENT',
       'marie_bio': "Former international athlete, dual IOC/FIFA certified. She leads the sports management of elite athletes, with an international footprint.",
       'link_sport': 'Sports Division',
       'home_sec2_label': '02 — Our divisions', 'home_sec2_t1': 'Two worlds,', 'home_sec2_t2': 'one <em>standard.</em>',
@@ -1209,7 +1213,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
       'ent_sec5_label': '05 — Partners & Collaborations', 'ent_sec5_title': 'An ecosystem<br>of <em>connections.</em>',
       'ent_pt1_t': 'Hotels & Hospitality', 'ent_pt1_d': 'Ongoing partnerships in Abidjan with prestigious establishments — events, hospitality, networking.',
       'ent_pt2_t': 'Media & Production', 'ent_pt2_d': 'Production houses for films, series, videos — an active network to place talents in the right place.',
-      'ent_pt3_t': 'Social Commitment', 'ent_pt3_d': 'Linked to File Espoir, committed to sports and humanitarian causes — a dimension that goes beyond the career.',
+      'ent_pt3_t': 'Social Commitment', 'ent_pt3_d': 'Linked to File Espoir, committed to and humanitarian causes — a dimension that goes beyond the career.',
       'ent_sec6_label': '06 — Lookbook', 'ent_sec6_title': 'A <em>presence,</em><br>not a pose.',
       'ent_cta_t': 'Ready to transform your career?', 'ent_cta_btn': 'Start a project',
       'part_hero_label': 'Network & Collaborations', 'part_hero_title': 'Our <em>Partners.</em>', 'part_hero_sub': 'A top-tier ecosystem of connections to support our talents on the international stage.',
